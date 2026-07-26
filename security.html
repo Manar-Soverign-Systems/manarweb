@@ -446,6 +446,7 @@ h1, h2, h3,
     <div style="border-left:1px solid rgba(240,240,250,0.08);padding-left:clamp(20px,3vw,48px)">
       <div style="font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#9696A4;margin-bottom:clamp(16px,2vw,24px)">Pages</div>
       <div style="display:flex;flex-direction:column;gap:2px">
+        <a href="/site-read.html" style="font-size:clamp(14px,1.8vw,18px);font-family:'Inter',sans-serif;font-weight:500;color:#E2E2E6;text-decoration:none;padding:8px 0;border-bottom:1px solid rgba(240,240,250,0.06);transition:color .2s" onmouseover="this.style.color='#F0F0FA'" onmouseout="this.style.color='rgba(240,240,250,0.65)'">Site Read</a>
         <a href="/about.html" style="font-size:clamp(14px,1.8vw,18px);font-family:'Inter',sans-serif;font-weight:500;color:#E2E2E6;text-decoration:none;padding:8px 0;border-bottom:1px solid rgba(240,240,250,0.06);transition:color .2s" onmouseover="this.style.color='#F0F0FA'" onmouseout="this.style.color='rgba(240,240,250,0.65)'">About</a>
         <a href="/industries.html" style="font-size:clamp(14px,1.8vw,18px);font-family:'Inter',sans-serif;font-weight:500;color:#E2E2E6;text-decoration:none;padding:8px 0;border-bottom:1px solid rgba(240,240,250,0.06);transition:color .2s" onmouseover="this.style.color='#F0F0FA'" onmouseout="this.style.color='rgba(240,240,250,0.65)'">Industries</a>
         <a href="/methodology.html" style="font-size:clamp(14px,1.8vw,18px);font-family:'Inter',sans-serif;font-weight:500;color:#E2E2E6;text-decoration:none;padding:8px 0;border-bottom:1px solid rgba(240,240,250,0.06);transition:color .2s" onmouseover="this.style.color='#F0F0FA'" onmouseout="this.style.color='rgba(240,240,250,0.65)'">How Manar Builds</a>
@@ -479,23 +480,28 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSiteMen
 </div>
 <div class="cw" style="max-width:820px">
 <div class="pr rv" data-reveal style="margin-bottom:clamp(36px,4.5vw,56px)"><p style="font-size:18px;line-height:1.65;color:rgba(240,240,250,0.68)">The core promise behind every Manar deployment is simple to state and meant to be checked, not taken on faith. Client data does not leave the building it was recorded in. The hardware running a model belongs to the client, not to Manar. The trained model itself belongs to the client once it is installed.</p></div>
-<div class="rv" data-reveal style="background:rgba(240,240,250,0.03);border:1px solid rgba(240,240,250,0.1);padding:clamp(24px,3.5vw,40px);margin-bottom:clamp(36px,4.5vw,56px)"><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(240,240,250,0.08)" class="three-col"><div style="background:#000;padding:20px;text-align:center"><div style="font-family:'Inter',sans-serif;font-weight:700;font-size:22px;color:#F0F0FA;margin-bottom:5px">Client</div><div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#9696A4">Owns the data</div></div><div style="background:#000;padding:20px;text-align:center"><div style="font-family:'Inter',sans-serif;font-weight:700;font-size:22px;color:#F0F0FA;margin-bottom:5px">Client</div><div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#9696A4">Owns the hardware</div></div><div style="background:#000;padding:20px;text-align:center"><div style="font-family:'Inter',sans-serif;font-weight:700;font-size:22px;color:#F0F0FA;margin-bottom:5px">Client</div><div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#9696A4">Owns the model</div></div></div></div>
+
+<div class="sl rv" data-reveal style="">How this is enforced</div>
+<div class="pr rv" data-reveal style="transition-delay:.06s;">
+<p>Offline is not a setting that gets switched on. It is a set of controls checked at two layers, physical and software, so that a mistake at one layer does not break the promise on its own.</p>
+<p style="margin-top:14px">Physically, unused network ports are disabled or removed, wireless radios are removed from the hardware where possible and blocked in software where they are not, and the machine is sealed with tamper evident marks logged at handover.</p>
+<p style="margin-top:14px">In software, the operating system is configured to block all outbound traffic by default, the model runtime is set to fail rather than silently reach outward, and every model file is checksummed against a manifest your own staff can recheck at any time.</p>
+</div>
 <div class="dv rv" data-reveal></div>
-<div class="sl rv" data-reveal style="">What runs where</div>
-<div class="pr rv" data-reveal style="transition-delay:.06s;"><p>A Manar model reads data where it already lives: cameras, records, or sensors already in place. There is no export of that data to a third party and no requirement to rebuild existing systems around Manar's software. Reasoning happens on the hardware installed at the site, not on a remote server. Alerts, answers, and reports are produced there and stay there unless the client chooses to move them.</p></div>
+
+<div class="sl rv" data-reveal style="">How you verify it</div>
+<div class="pr rv" data-reveal style="transition-delay:.06s;">
+<p>At handover, your own staff run the check, not ours. A network scan confirms nothing is listening that should not be. The connection is physically removed while the system is actively answering a question, and it keeps answering. The firewall rules are reviewed on the machine itself, not described in a document. A written record is signed and kept by you, and the same check can be repeated at any point afterward, by your own people, without anyone from Manar in the room.</p>
+</div>
 <div class="dv rv" data-reveal></div>
-<div class="sl rv" data-reveal style="">Offline by default</div>
-<div class="pr rv" data-reveal style="transition-delay:.06s;"><p>A deployment can run fully offline if the client requires it. Where a client wants a partner system, a dashboard, or a software product to call into a Manar model as a feature, that integration is scoped and agreed with the client directly, not enabled by default. Sovereignty is a property of the deployment, not a description added afterward.</p></div>
+
+<div class="sl rv" data-reveal style="">What Manar can and cannot see</div>
+<div class="pr rv" data-reveal style="transition-delay:.06s;">
+<p>Once a deployment is running, Manar has no standing access to what it holds. Access only happens when you provide it, for a specific piece of work, at a specific time, with your own staff present. There is no telemetry and no remote session left open in the background.</p>
+<p style="margin-top:14px">The one honest limit is training. Building a model requires working with your data directly, because a model cannot be trained on data nobody has examined. That work happens on your terms, on your premises where you require it. What does not happen is a copy leaving with us afterward.</p>
+</div>
 <div class="dv rv" data-reveal></div>
-<div class="sl rv" data-reveal style="">Hardware and access</div>
-<div class="pr rv" data-reveal style="transition-delay:.06s;"><p>Hardware is sized to the specific model and workload it runs, not sold as a single fixed box regardless of the job. Physical placement, whether that is a camera at a gate or a server in a server room, is decided during the site visit that precedes every deployment, based on what the site actually needs rather than a standard template.</p></div>
-<div class="dv rv" data-reveal></div>
-<div class="sl rv" data-reveal style="">Data collected by this website</div>
-<div class="pr rv" data-reveal style="transition-delay:.06s;"><p>This page describes what happens once a system is deployed at a client's site. Separately, the Manar website itself collects a small amount of information through its contact form, covered in full in the Privacy Policy. The two are not the same thing. A visitor filling in a contact form is not a client with a deployed system.</p></div>
-<div class="dv rv" data-reveal></div>
-<div class="sl rv" data-reveal style="">Questions</div>
-<div class="pr rv" data-reveal style="transition-delay:.06s;"><p>Any organization evaluating Manar for a security-sensitive environment, a bank, a hospital, a government office, is welcome to raise specific questions about data handling before a deployment begins. These questions are answered directly, as part of the site visit and proposal process, not through a generic compliance document.</p></div>
-<div class="dv rv" data-reveal></div>
+
 <div class="rv" data-reveal style="display:flex;gap:16px;flex-wrap:wrap"><a href="/contact.html" class="btn-p">Raise a question</a> <a href="/privacy.html" class="btn-s">Privacy policy</a></div>
 </div>
 </main>
@@ -544,10 +550,11 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSiteMen
         </nav>
       </div>
 
-      <!-- Legal -->
+      <!-- Legal & Policy -->
       <div>
-        <div style="font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#9696A4;margin-bottom:20px">Legal</div>
+        <div style="font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#9696A4;margin-bottom:20px">Legal & Policy</div>
         <nav style="display:flex;flex-direction:column;gap:12px">
+          <a href="/policy.html" style="font-size:16px;color:#C4C4CE;text-decoration:none;transition:color .2s" onmouseover="this.style.color='#F0F0FA'" onmouseout="this.style.color='rgba(240,240,250,0.55)'">National AI Policy</a>
           <a href="/privacy.html" style="font-size:16px;color:#C4C4CE;text-decoration:none;transition:color .2s" onmouseover="this.style.color='#F0F0FA'" onmouseout="this.style.color='rgba(240,240,250,0.55)'">Privacy Policy</a>
           <a href="/security.html" style="font-size:16px;color:#C4C4CE;text-decoration:none;transition:color .2s" onmouseover="this.style.color='#F0F0FA'" onmouseout="this.style.color='rgba(240,240,250,0.55)'">Data Sovereignty</a>
         </nav>
