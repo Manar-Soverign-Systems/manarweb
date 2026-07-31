@@ -917,80 +917,73 @@ section#top { background-color: transparent !important; }
 </section>
 <style>@media(max-width:680px){.adoption-record-grid{grid-template-columns:1fr!important}}</style>
 
-<!-- ===================== INDUSTRIES (picker) ===================== -->
-
+<!-- ===================== WHERE IT FITS ===================== -->
 
 <div style="height:1px;max-width:100%;background:linear-gradient(90deg,transparent,rgba(190,205,255,.28) 30%,rgba(190,205,255,.28) 70%,transparent);pointer-events:none"></div>
 <section id="industries" style="padding:clamp(72px,8vw,128px) 0;background:#0A0A0A">
   <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,64px)">
-    <div data-rv="" style="opacity:0;transform:translateY(20px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1);max-width:640px;margin-bottom:clamp(24px,2.4vw,36px)">
-      <div style="display:flex;align-items:center;gap:0;margin-bottom:20px">
-        
-        <span style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#A0A0AA;font-weight:500">Where it fits</span>
-      </div>
-      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(32px,4vw,56px);text-transform:uppercase;line-height:1.08;letter-spacing:-.03em;color:#FFFFFF">Built for what you actually run. <span style="color:#A0A0AA">Not the world in general.</span></h2>
-      <p style="margin-top:18px;font-size:16px;line-height:1.62;color:#A0A0AA;max-width:56ch">Manar maintains seventeen registered models across six families. Choose the sector you run, and see which models read its data, where they show up, and how a deployment begins on your ground.</p>
-    </div>
-    <div data-rv="" style="opacity:0;transform:translateY(20px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,158px),1fr));gap:9px">
-        <sc-for list="{{ cards }}" as="c" hint-placeholder-count="8">
-          <div onclick="{{ c.onClick }}" style="position:relative;cursor:pointer;padding:14px 16px;border:1px solid {{ c.border }};border-radius:4px;background:{{ c.bg }};transition:border-color .2s,background .2s" style-hover="border-color:#686878">
-            <div style="font-family:'Inter';font-weight:600;font-size:13px;letter-spacing:.02em;text-transform:uppercase;line-height:1.25;color:{{ c.fg }}">{{ c.name }}</div>
-            <div style="font-family:'Inter',sans-serif;font-size:12px;line-height:1.4;margin-top:4px;color:{{ c.sc }}">{{ c.sub }}</div>
-          </div>
-        </sc-for>
-      </div>
-      <div data-ind-detail="" style="margin-top:14px;background:#0A0A0A;border:1px solid rgba(240,240,250,.08);border-radius:4px;padding:clamp(28px,3.4vw,42px) clamp(24px,3.4vw,42px)">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:clamp(18px,3vw,40px);flex-wrap:wrap;margin-bottom:clamp(22px,2.6vw,30px)">
-          <div style="max-width:54ch">
-            <div style="font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A0A0AA;margin-bottom:12px">Your sector</div>
-            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(28px,3.2vw,40px);text-transform:uppercase;line-height:1.08;letter-spacing:-.03em;color:#FFFFFF">{{ curName }}</div>
-            <p style="margin-top:12px;font-size:15.5px;line-height:1.55;color:#A0A0AA">{{ frame }}</p>
-          </div>
-          <div style="text-align:left;flex:0 0 auto">
-            <div style="font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#A0A0AA;margin-bottom:7px">What it reads</div>
-            <div style="font-family:'Inter',sans-serif;font-size:15px;letter-spacing:-.006em;color:#F0F0FA">{{ reads }}</div>
-          </div>
-        </div>
-        <div style="height:1px;background:rgba(240,240,250,.10);margin-bottom:clamp(22px,2.6vw,30px)"></div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:clamp(26px,4vw,56px);align-items:start">
-          <div>
-            <div style="font-family:'Inter',sans-serif;font-size:16px;letter-spacing:.1em;text-transform:uppercase;color:#A0A0A8;margin-bottom:16px">Where it shows up</div>
-            <ul style="list-style:none;display:flex;flex-direction:column;gap:14px">
-              <sc-for list="{{ items }}" as="it" hint-placeholder-count="4">
-                <li style="position:relative;padding-left:20px;font-size:15px;line-height:1.55;color:#A0A0AA">
-                  <span style="position:absolute;left:0;top:10px;width:8px;height:1.5px;background:rgba(240,240,250,0.3)"></span>
-                  <b style="color:#F0F0FA;font-weight:600">{{ it.lead }}</b> {{ it.rest }}
-                </li>
-              </sc-for>
-            </ul>
-          </div>
-          <div>
-            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px">
-              <span style="font-family:'Inter',sans-serif;font-size:16px;letter-spacing:.1em;text-transform:uppercase;color:#A0A0A8">Deployed models</span>
-              <span style="font-family:'Inter',sans-serif;font-size:16px;letter-spacing:.04em;color:rgba(10,10,10,.3)">{{ modelCount }} registered</span>
-            </div>
-            <div style="border:1px solid rgba(240,240,250,.08);border-radius:2px;overflow:hidden;background:#000000">
-              <sc-for list="{{ systems }}" as="sy" hint-placeholder-count="3">
-                <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-bottom:1px solid rgba(240,240,250,.06);gap:12px">
-                  <span style="font-family:'Inter',sans-serif;font-size:16px;letter-spacing:.03em;font-weight:500;color:#F0F0FA;white-space:nowrap">{{ sy.code }}</span>
-                  <span style="font-family:'Inter',sans-serif;font-size:12.5px;color:#A0A0A8;text-align:right;white-space:nowrap">{{ sy.role }}</span>
-                </div>
-              </sc-for>
-            </div>
-            <a href="/contact.html" style="margin-top:11px;display:flex;align-items:center;justify-content:space-between;gap:14px;text-decoration:none;background:#000000;border-radius:2px;padding:14px 16px;transition:transform .3s ease,box-shadow .3s ease" style-hover="transform:translateY(-2px);box-shadow:0 14px 30px -16px rgba(0,0,0,.55)">
-              <span style="font-family:'Inter',sans-serif;font-size:13.5px;line-height:1.35;color:#F0F0FA">Deploy <b style="font-weight:600;color:#fff">{{ curName }}</b> intelligence on your own hardware.</span>
-              <span style="font-family:'Inter',sans-serif;font-size:16px;letter-spacing:.06em;text-transform:uppercase;color:#A0A0AA;white-space:nowrap">Start →</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-<div style="margin-top:clamp(24px,3vw,40px)"><a href="/industries.html" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#A0A0AA;text-decoration:none;transition:color .2s;border-bottom:1px solid rgba(240,240,250,0.18);padding-bottom:3px" onmouseover="this.style.color='#F0F0FA'" onmouseout="this.style.color='rgba(240,240,250,0.55)'">View all nine sectors &rarr;</a></div>
-</div>
 
+    <div data-rv="" style="opacity:0;transform:translateY(20px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1);display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,60px);align-items:end;margin-bottom:clamp(40px,5vw,64px)" class="wif-head-grid">
+      <div>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#9898A4">Where it fits</span>
+        <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(32px,4vw,56px);text-transform:uppercase;line-height:1.06;letter-spacing:-.03em;color:#FFFFFF;margin-top:14px">Built for what you run. <span style="color:#9898A4">Not the world in general.</span></h2>
+      </div>
+      <p style="font-size:16px;line-height:1.68;color:#C8C8D2;max-width:44ch">Every sector on this list has been running data for years that nobody has read. Manar trains a model on your specific conditions and deploys it on hardware you own, inside your building.</p>
+    </div>
+
+    <!-- Sector rows -->
+    <div data-rv="" style="opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.2,.7,.2,1) .08s,transform .9s cubic-bezier(.2,.7,.2,1) .08s;border-top:1px solid rgba(240,240,250,0.10)">
+
+      <a href="/industries.html#institutions" class="wif-row" style="display:flex;align-items:center;justify-content:space-between;gap:clamp(16px,3vw,40px);padding:clamp(20px,2.5vw,28px) 0;border-bottom:1px solid rgba(240,240,250,0.08);text-decoration:none;transition:background .2s" onmouseover="this.style.background='rgba(240,240,250,0.03)';this.style.paddingLeft='12px'" onmouseout="this.style.background='transparent';this.style.paddingLeft='0'">
+        <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(22px,2.8vw,36px);text-transform:uppercase;letter-spacing:-.01em;color:#F5F5FA;flex-shrink:0">Institutions</span>
+        <span style="font-size:15px;line-height:1.5;color:#9898A4;max-width:44ch;text-align:right">AI that reads your archive. Policy, records, and registers answered in seconds.</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#686878;flex-shrink:0;margin-left:auto">→</span>
+      </a>
+
+      <a href="/industries.html#security" class="wif-row" style="display:flex;align-items:center;justify-content:space-between;gap:clamp(16px,3vw,40px);padding:clamp(20px,2.5vw,28px) 0;border-bottom:1px solid rgba(240,240,250,0.08);text-decoration:none;transition:background .2s,padding-left .2s" onmouseover="this.style.background='rgba(240,240,250,0.03)';this.style.paddingLeft='12px'" onmouseout="this.style.background='transparent';this.style.paddingLeft='0'">
+        <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(22px,2.8vw,36px);text-transform:uppercase;letter-spacing:-.01em;color:#F5F5FA;flex-shrink:0">Security</span>
+        <span style="font-size:15px;line-height:1.5;color:#9898A4;max-width:44ch;text-align:right">AI that watches your cameras. Trained on your site, not a generic dataset.</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#686878;flex-shrink:0;margin-left:auto">→</span>
+      </a>
+
+      <a href="/industries.html#factories" class="wif-row" style="display:flex;align-items:center;justify-content:space-between;gap:clamp(16px,3vw,40px);padding:clamp(20px,2.5vw,28px) 0;border-bottom:1px solid rgba(240,240,250,0.08);text-decoration:none;transition:background .2s,padding-left .2s" onmouseover="this.style.background='rgba(240,240,250,0.03)';this.style.paddingLeft='12px'" onmouseout="this.style.background='transparent';this.style.paddingLeft='0'">
+        <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(22px,2.8vw,36px);text-transform:uppercase;letter-spacing:-.01em;color:#F5F5FA;flex-shrink:0">Factories</span>
+        <span style="font-size:15px;line-height:1.5;color:#9898A4;max-width:44ch;text-align:right">AI that reads your production line. Defects caught before they move downstream.</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#686878;flex-shrink:0;margin-left:auto">→</span>
+      </a>
+
+      <a href="/industries.html#oilandgas" class="wif-row" style="display:flex;align-items:center;justify-content:space-between;gap:clamp(16px,3vw,40px);padding:clamp(20px,2.5vw,28px) 0;border-bottom:1px solid rgba(240,240,250,0.08);text-decoration:none;transition:background .2s,padding-left .2s" onmouseover="this.style.background='rgba(240,240,250,0.03)';this.style.paddingLeft='12px'" onmouseout="this.style.background='transparent';this.style.paddingLeft='0'">
+        <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(22px,2.8vw,36px);text-transform:uppercase;letter-spacing:-.01em;color:#F5F5FA;flex-shrink:0">Oil and Gas</span>
+        <span style="font-size:15px;line-height:1.5;color:#9898A4;max-width:44ch;text-align:right">AI that monitors your field. Telemetry read on-site, offline, no cloud required.</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#686878;flex-shrink:0;margin-left:auto">→</span>
+      </a>
+
+      <a href="/industries.html#agriculture" class="wif-row" style="display:flex;align-items:center;justify-content:space-between;gap:clamp(16px,3vw,40px);padding:clamp(20px,2.5vw,28px) 0;border-bottom:1px solid rgba(240,240,250,0.08);text-decoration:none;transition:background .2s,padding-left .2s" onmouseover="this.style.background='rgba(240,240,250,0.03)';this.style.paddingLeft='12px'" onmouseout="this.style.background='transparent';this.style.paddingLeft='0'">
+        <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(22px,2.8vw,36px);text-transform:uppercase;letter-spacing:-.01em;color:#F5F5FA;flex-shrink:0">Agriculture</span>
+        <span style="font-size:15px;line-height:1.5;color:#9898A4;max-width:44ch;text-align:right">AI that reads your land. Decades of yield history made useful for the first time.</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#686878;flex-shrink:0;margin-left:auto">→</span>
+      </a>
+
+      <a href="/industries.html#health" class="wif-row" style="display:flex;align-items:center;justify-content:space-between;gap:clamp(16px,3vw,40px);padding:clamp(20px,2.5vw,28px) 0;border-bottom:1px solid rgba(240,240,250,0.08);text-decoration:none;transition:background .2s,padding-left .2s" onmouseover="this.style.background='rgba(240,240,250,0.03)';this.style.paddingLeft='12px'" onmouseout="this.style.background='transparent';this.style.paddingLeft='0'">
+        <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(22px,2.8vw,36px);text-transform:uppercase;letter-spacing:-.01em;color:#F5F5FA;flex-shrink:0">Healthcare</span>
+        <span style="font-size:15px;line-height:1.5;color:#9898A4;max-width:44ch;text-align:right">AI that reads your records. Patient history answered in seconds. No data leaves the building.</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#686878;flex-shrink:0;margin-left:auto">→</span>
+      </a>
+
+    </div>
+
+    <div style="margin-top:clamp(24px,3vw,40px)"><a href="/industries.html" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#9898A4;text-decoration:none;transition:color .2s;border-bottom:1px solid rgba(240,240,250,0.18);padding-bottom:3px" onmouseover="this.style.color='#F0F0FA'" onmouseout="this.style.color='#9898A4'">All nine sectors &rarr;</a></div>
+
+  </div>
 </section>
+<style>
+@media(max-width:700px){.wif-head-grid{grid-template-columns:1fr!important}}
+@media(max-width:600px){
+  .wif-row{flex-direction:column!important;align-items:flex-start!important;gap:8px!important}
+  .wif-row>span:nth-child(2){text-align:left!important;max-width:none!important}
+  .wif-row>span:last-child{display:none!important}
+}
+</style>
 
 <!-- ===================== INTEGRATION ===================== -->
 

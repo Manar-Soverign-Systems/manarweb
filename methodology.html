@@ -97,6 +97,10 @@ section{padding-top:var(--section-gap);padding-bottom:var(--section-gap)}
   .steps-grid{grid-template-columns:repeat(2,1fr)!important}
   .steps-grid>div:last-child{grid-column:span 2!important}
 }
+@media(max-width:768px){
+  .steps-grid{grid-template-columns:1fr!important}
+  .steps-grid>div:last-child{grid-column:1!important}
+}
 </style>
 </head>
 <body>
@@ -204,7 +208,7 @@ section{padding-top:var(--section-gap);padding-bottom:var(--section-gap)}
           <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:.08em">01</span>
           <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(22px,2vw,28px);text-transform:uppercase;color:var(--text);letter-spacing:.01em">Train</span>
         </div>
-        <p style="font-size:15px;line-height:1.72;color:var(--text-body)">A deployment starts from a registered model already built for the general classification a client needs. That starting model is then trained further on the client's own conditions. Its own cameras, its own documents, its own machines. Nothing generic stays generic past this step.</p>
+        <p style="font-size:15px;line-height:1.72;color:var(--text-body)">A deployment starts from a registered model built for the general classification a client needs, then trained further on the client's own data. Its cameras, its documents, its machines. Nothing generic stays generic past this step.</p>
       </div>
 
       <!-- 02 DEPLOY -->
@@ -213,7 +217,7 @@ section{padding-top:var(--section-gap);padding-bottom:var(--section-gap)}
           <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:.08em">02</span>
           <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(22px,2vw,28px);text-transform:uppercase;color:var(--text);letter-spacing:.01em">Deploy</span>
         </div>
-        <p style="font-size:15px;line-height:1.72;color:var(--text-body)">The trained model installs on hardware the client owns, sized to what that specific model actually needs to do. A document search system and a sixteen-camera vision system do not need the same hardware. Everything runs inside the client's building, offline if required, with no cloud dependency built in.</p>
+        <p style="font-size:15px;line-height:1.72;color:var(--text-body)">The trained model installs on hardware the client owns, sized to what the specific model needs to do. Everything runs inside the client's building, offline if required, with no cloud dependency built in.</p>
       </div>
 
       <!-- 03 HANDOVER -->
@@ -222,7 +226,7 @@ section{padding-top:var(--section-gap);padding-bottom:var(--section-gap)}
           <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:.08em">03</span>
           <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(22px,2vw,28px);text-transform:uppercase;color:var(--text);letter-spacing:.01em">Handover</span>
         </div>
-        <p style="font-size:15px;line-height:1.72;color:var(--text-body)">A system nobody uses has failed, whatever the accuracy numbers say. The people who will actually work with it are trained before the engagement closes. Not a manual left on a desk. Handover is complete when your own staff can operate the system without Manar in the room.</p>
+        <p style="font-size:15px;line-height:1.72;color:var(--text-body)">A system nobody uses has failed, whatever the accuracy numbers say. Handover is complete when your own staff can operate it without Manar in the room.</p>
       </div>
 
       <!-- 04 ADAPT -->
@@ -231,7 +235,7 @@ section{padding-top:var(--section-gap);padding-bottom:var(--section-gap)}
           <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:.08em">04</span>
           <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(22px,2vw,28px);text-transform:uppercase;color:var(--text);letter-spacing:.01em">Adapt</span>
         </div>
-        <p style="font-size:15px;line-height:1.72;color:var(--text-body)">A model does not stay static once it is installed. It retrains as the client's own data grows, so it reflects the operation as it is today rather than as it was on the day it went live. This is scheduled with the client, not run silently without their knowledge.</p>
+        <p style="font-size:15px;line-height:1.72;color:var(--text-body)">A model retrains as the client's own data grows, so it reflects the operation as it is today rather than as it was on the day it went live. Scheduled with the client. Never run silently.</p>
       </div>
 
       <!-- 05 COMPOUND — spans 2 cols -->
@@ -240,7 +244,7 @@ section{padding-top:var(--section-gap);padding-bottom:var(--section-gap)}
           <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-muted);letter-spacing:.08em">05</span>
           <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(22px,2vw,28px);text-transform:uppercase;color:var(--text);letter-spacing:.01em">Compound</span>
         </div>
-        <p style="font-size:15px;line-height:1.72;color:var(--text-body);max-width:64ch">Accuracy on a client's own conditions improves with every day the model runs there. An organization that starts training on its own data now holds a record that a competitor starting later cannot shortcut or buy. This is the actual advantage of the approach, not a claim about the model being smarter in the abstract.</p>
+        <p style="font-size:15px;line-height:1.72;color:var(--text-body);max-width:64ch">Accuracy improves with every day the model runs on the client's own conditions. An organization that starts training now holds a record a competitor starting later cannot shortcut or buy.</p>
       </div>
 
     </div>
