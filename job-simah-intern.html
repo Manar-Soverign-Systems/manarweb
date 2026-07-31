@@ -160,6 +160,27 @@ h1{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(52p
 
 @media(max-width:600px){.menu-cols{grid-template-columns:1fr}}
 </style>
+<style id="manar-design-v2-sub">
+/* MANAR Design v2 Subpage Sync */
+:root { --bg:#0A0A0C; --bg-alt:#060608; --text:#F5F5FA; --text-body:#C8C8D2; --text-sub:#E2E2EA; --text-muted:#9898A4; --text-dim:#686878; --border:rgba(240,240,250,0.10); --border-hover:rgba(240,240,250,0.25); --card-bg:rgba(240,240,250,0.035); --card-radius:8px; --section-gap:clamp(80px,10vw,160px); --accent-gold:#C9A84C; }
+html,body { background:var(--bg)!important; color:var(--text-body); font-size:17px; line-height:1.75; }
+p,li,dd,td,th { color:var(--text-body); }
+h1,h2 { color:#FFFFFF!important; }
+h3 { color:var(--text-sub)!important; }
+section,[id] { background-color:var(--bg)!important; }
+section { padding-top:var(--section-gap)!important; padding-bottom:var(--section-gap)!important; }
+section:nth-of-type(odd) { background-color:var(--bg)!important; }
+section:nth-of-type(even) { background-color:var(--bg-alt)!important; }
+div[style*="border-radius:2px"] { border-radius:var(--card-radius)!important; }
+div[style*="border-radius:4px"] { border-radius:var(--card-radius)!important; }
+div[style*="border:1px solid rgba(240,240,250"] { transition:border-color .25s ease,transform .25s ease,box-shadow .25s ease!important; }
+div[style*="border:1px solid rgba(240,240,250"]:hover { border-color:var(--border-hover)!important; transform:translateY(-2px); box-shadow:0 8px 32px -12px rgba(0,0,0,0.5); }
+[style*="color:#A0A0AA"] { color:#C8C8D2!important; }
+[style*="color:#A0A0A8"] { color:#C8C8D2!important; }
+[style*="color:#9696A4"] { color:#9898A4!important; }
+@media(max-width:900px){ html,body { font-size:17px!important; } }
+@media(max-width:640px){ html,body { font-size:17px!important; line-height:1.78!important; } details { padding:22px 0!important; } summary { font-size:17px!important; min-height:48px!important; } #manar-nav>div { padding-top:18px!important; padding-bottom:18px!important; } }
+</style>
 </head>
 <body>
 <nav>

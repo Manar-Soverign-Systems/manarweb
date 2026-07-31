@@ -82,25 +82,33 @@
   <!-- Body fonts: display=swap, body text swap is acceptable -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Amiri&display=swap">
 <style>
-/* ═══ MANAR DESIGN SYSTEM ═══ */
+/* ═══ MANAR DESIGN SYSTEM v2 ═══ */
 :root {
-  --bg: #000000;
-  --text: #F0F0FA;
-  --text-muted: #A0A0A8;
+  --bg: #0A0A0C;
+  --bg-alt: #060608;
+  --text: #F5F5FA;
+  --text-body: #C8C8D2;
+  --text-sub: #E2E2EA;
+  --text-muted: #9898A4;
+  --text-dim: #686878;
   --border: rgba(240,240,250,0.10);
+  --border-hover: rgba(240,240,250,0.25);
   --border-active: rgba(240,240,250,0.4);
-  --text-dim: rgba(240,240,250,0.35);
-  --card-bg: rgba(240,240,250,0.04);
+  --card-bg: rgba(240,240,250,0.035);
+  --card-bg-hover: rgba(240,240,250,0.06);
+  --accent-gold: #C9A84C;
+  --section-gap: clamp(80px, 10vw, 160px);
+  --card-radius: 8px;
 }
 
 * { box-sizing:border-box; margin:0; padding:0; }
 
 html, body {
   background: var(--bg) !important;
-  color: var(--text);
+  color: var(--text-body);
   font-family: 'Inter', -apple-system, sans-serif !important;
-  font-size: 16px;
-  line-height: 1.5;
+  font-size: 17px;
+  line-height: 1.75;
   overflow-x: hidden;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -145,25 +153,46 @@ a[style*="border-radius:2px"]:hover {
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #000; }
-::-webkit-scrollbar-thumb { background: rgba(240,240,250,0.15); border-radius: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: rgba(240,240,250,0.18); border-radius: 3px; }
 
 /* ═══ DARK MODE OVERRIDES ═══ */
 section, [id] {
-  background-color: #000000 !important;
+  background-color: var(--bg) !important;
 }
 /* Fix any card that was light */
-[style*="background:#ECE"] { background: #0A0A0A !important; }
-[style*="background:#F6F"] { background: #0A0A0A !important; }
-[style*="background:#FBF"] { background: #0A0A0A !important; }
-[style*="background:#FCF"] { background: #0A0A0A !important; }
-[style*="background:#fff"] { background: #000000 !important; }
-[style*="background:#FFF"] { background: #000000 !important; }
-[style*="background:white"] { background: #000000 !important; }
+[style*="background:#ECE"] { background: var(--bg) !important; }
+[style*="background:#F6F"] { background: var(--bg) !important; }
+[style*="background:#FBF"] { background: var(--bg) !important; }
+[style*="background:#FCF"] { background: var(--bg) !important; }
+[style*="background:#fff"] { background: var(--bg) !important; }
+[style*="background:#FFF"] { background: var(--bg) !important; }
+[style*="background:white"] { background: var(--bg) !important; }
 
 /* Ensure text visibility on dark bg */
 [style*="color:#1"], [style*="color:#2"], [style*="color:#3"] {
-  color: #F0F0FA !important;
+  color: var(--text) !important;
+}
+
+/* ═══ TYPOGRAPHY CONTRAST UPLIFT ═══ */
+/* Body text: lift from washed #A0A0AA to readable #C8C8D2 (9.2:1 on #0A0A0C) */
+p, li, dd, td, th { color: var(--text-body); }
+/* Subheadings (h3, card titles): brighter tier */
+h3 { color: var(--text-sub) !important; }
+/* Headings: pure white for maximum punch */
+h1, h2 { color: #FFFFFF !important; }
+
+/* ═══ CARD SYSTEM UPLIFT ═══ */
+/* Round all cards from 2px to 8px, add hover lift */
+div[style*="border-radius:2px"] { border-radius: var(--card-radius) !important; }
+div[style*="border-radius: 2px"] { border-radius: var(--card-radius) !important; }
+div[style*="border:1px solid rgba(240,240,250"] {
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+div[style*="border:1px solid rgba(240,240,250"]:hover {
+  border-color: var(--border-hover) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px -12px rgba(0,0,0,0.5);
 }
 
 
@@ -229,23 +258,12 @@ section, [id] {
     padding-bottom: 0 !important;
   }
   
-  /* Convictions: 4-col → 2x2 grid on mobile, tighter padding */
+  /* Convictions bento: 2-col → 1-col stacked on mobile */
   .convictions-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-columns: 1fr !important;
   }
   .convictions-grid > div {
-    padding-top: 20px !important;
-    padding-bottom: 20px !important;
-  }
-  .convictions-grid > div {
-    border-right: none !important;
-    border-bottom: 1px solid rgba(240,240,250,0.09) !important;
-  }
-  .convictions-grid > div:nth-child(odd) {
-    border-right: 1px solid rgba(240,240,250,0.09) !important;
-  }
-  .convictions-grid > div:nth-last-child(-n+2) {
-    border-bottom: none !important;
+    padding: clamp(24px, 5vw, 32px) !important;
   }
 
   /* Thesis stats: keep 2-col but scale text slightly */
@@ -506,30 +524,23 @@ canvas {
 
 <!-- hero anim in component -->
 <style>@media(max-width:400px){
-  /* Convictions: 1-col on very small screens */
-  .convictions-grid {
-    grid-template-columns: 1fr !important;
-  }
+  /* Bento already 1-col at 640px, just tighten padding */
   .convictions-grid > div {
-    border-right: none !important;
-    border-bottom: 1px solid rgba(240,240,250,0.09) !important;
-  }
-  .convictions-grid > div:last-child {
-    border-bottom: none !important;
+    padding: 20px !important;
   }
 }
 @media(max-width:600px){.idx-menu-cols{grid-template-columns:1fr!important}.idx-menu-cols>div:last-child{border-left:none!important;padding-left:0!important;border-top:1px solid rgba(240,240,250,0.08);padding-top:20px!important}}</style>
 
-<style id="sample-a-overrides">
-/* ── Sample A Design System: Barlow Condensed + Solid Hex Tokens ── */
-/* Heading font override, Barlow Condensed replaces Inter for display text */
+<style id="manar-design-v2">
+/* ── MANAR Design v2: Barlow Condensed Headings + Enhanced Readability ── */
+
+/* Heading font: Barlow Condensed for display text */
 h1, h2, h3,
 [style*="font-weight:800"],
 [style*="font-weight: 800"] {
   font-family: 'Barlow Condensed', Impact, 'Arial Narrow', sans-serif !important;
   letter-spacing: -0.01em;
 }
-/* Larger headlines: extra condensed tracking */
 [style*="font-size:clamp(48px"],
 [style*="font-size:clamp(52px"],
 [style*="font-size:clamp(56px"],
@@ -541,22 +552,59 @@ h1, h2, h3,
 [style*="font-size:clamp(96px"] {
   font-family: 'Barlow Condensed', Impact, 'Arial Narrow', sans-serif !important;
 }
-/* Subheadings: Inter 700 → Barlow Condensed */
 [style*="font-weight:700"][style*="font-size:clamp(2"],
 [style*="font-weight:700"][style*="font-size:clamp(3"],
 [style*="font-weight:700"][style*="font-size:clamp(4"],
 [style*="font-weight:700"][style*="font-size:clamp(5"] {
   font-family: 'Barlow Condensed', Impact, 'Arial Narrow', sans-serif !important;
 }
-/* Color token corrections, raise contrast to readable levels */
-:root {
-  --text-dim: #9696A4 !important;
-  --text-muted: #C4C4CE !important;
-}
-/* Raise orphaned very-dim text */
+
+/* ── Body text contrast uplift (inline overrides) ── */
+/* Lift #A0A0AA inline colors to readable #C8C8D2 */
+[style*="color:#A0A0AA"] { color: #C8C8D2 !important; }
+[style*="color:#A0A0A8"] { color: #C8C8D2 !important; }
+/* Lift faint description text */
+[style*="color:rgba(240,240,250,0.58)"] { color: #C8C8D2 !important; }
+[style*="color:rgba(240,240,250,.58)"] { color: #C8C8D2 !important; }
+[style*="color:rgba(240,240,250,0.66)"] { color: #C8C8D2 !important; }
+[style*="color:rgba(240,240,250,.66)"] { color: #C8C8D2 !important; }
+/* Lift card footer text */
+[style*="color:#9696A4"] { color: #9898A4 !important; }
+/* Lift very dim text */
 [style*="opacity:0.3"],
 [style*="opacity: 0.3"] {
   opacity: 0.75 !important;
+}
+/* Raise hero bar and ticker text */
+[style*="color:rgba(240,240,250,.38)"] { color: rgba(240,240,250,0.52) !important; }
+
+/* ── Section spacing overrides ── */
+section { padding-top: var(--section-gap) !important; padding-bottom: var(--section-gap) !important; }
+section#top { padding: 0 !important; } /* hero keeps its own padding */
+
+/* ── Section background alternation ── */
+section:nth-of-type(odd) { background-color: var(--bg) !important; }
+section:nth-of-type(even) { background-color: var(--bg-alt) !important; }
+section#top { background-color: transparent !important; }
+
+/* ── Card border-radius global uplift ── */
+[style*="border-radius:4px"] { border-radius: var(--card-radius) !important; }
+
+/* ── Mobile typography uplift ── */
+@media(max-width:900px){
+  html, body { font-size: 17px !important; }
+  h2 { font-size: clamp(26px, 6vw, 40px) !important; }
+}
+@media(max-width:640px){
+  html, body { font-size: 17px !important; line-height: 1.78 !important; }
+  /* Stack hero buttons vertically */
+  [data-hero-ctas] { flex-direction: column !important; align-items: stretch !important; }
+  [data-hero-ctas] a { text-align: center !important; }
+  /* Larger FAQ touch targets */
+  details { padding: 22px 0 !important; }
+  summary { font-size: 17px !important; min-height: 48px !important; }
+  /* Nav padding for thumb reach */
+  #manar-nav > div { padding-top: 18px !important; padding-bottom: 18px !important; }
 }
 </style>
 
@@ -743,6 +791,7 @@ h1, h2, h3,
         <span style="display:inline-block;animation:mnFocus 1.0s cubic-bezier(.16,.82,.24,1) .85s both">that knows</span>
         <span style="display:inline-block;color:#A0A0AA;animation:mnFocus 1.0s cubic-bezier(.16,.82,.24,1) 1.0s both">yours.</span>
       </span>
+      <span style="display:block;font-family:'Inter',sans-serif;font-size:clamp(11px,1.1vw,14px);font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#9898A4;margin-top:clamp(16px,2vw,28px);animation:mnFocus 1.0s cubic-bezier(.16,.82,.24,1) 1.15s both">Pakistan's AI Adoption Partner</span>
     </h1>
 
     <p style="margin:clamp(22px,2.8vw,30px) 0 0;max-width:52ch;font-size:16px;line-height:1.65;color:#E2E2E6;animation:mnUp 1.0s cubic-bezier(.2,.7,.2,1) 1.2s both">Trained on your domain. Running on hardware you own. No cloud, no data leaving your site.</p>
@@ -791,7 +840,7 @@ h1, h2, h3,
     <div class="thesis-manifest-grid" data-rv="" style="opacity:0;transform:translateY(18px);transition:opacity 1s cubic-bezier(.2,.7,.2,1) .2s,transform 1s cubic-bezier(.2,.7,.2,1) .2s;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(240,240,250,.12)">
 
       <!-- THE PREMISE -->
-      <div style="padding:clamp(24px,3vw,36px) clamp(18px,2.5vw,32px) clamp(24px,3vw,36px) 0;border-right:1px solid rgba(240,240,250,.08)">
+      <div style="padding:clamp(24px,3vw,36px) clamp(18px,2.5vw,32px) clamp(24px,3vw,36px) clamp(18px,2.5vw,32px);border-right:1px solid rgba(240,240,250,.08);border-left:3px solid var(--accent-gold,#C9A84C)">
         <div style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#A0A0AA;font-weight:600;margin-bottom:16px">The premise</div>
         <div style="font-family:'Inter',sans-serif;font-size:16px;line-height:1.7;color:#A0A0AA">Generic AI is available to everyone, which is precisely why it is the advantage of no one. The advantage is sovereign intelligence, trained on your conditions alone, running offline on hardware you control. Stanford's AI Index measured the same conclusion: the cost of generic intelligence fell 280 fold in eighteen months. What everyone can rent is an advantage to no one.</div>
       </div>
@@ -822,36 +871,40 @@ h1, h2, h3,
       <span style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#A0A0AA;font-weight:500">What we believe</span>
     </div>
 
-    <div class="convictions-grid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:1px solid rgba(240,240,250,0.10)">
+    <div class="convictions-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(240,240,250,0.08);border:1px solid rgba(240,240,250,0.08);border-radius:var(--card-radius,8px);overflow:hidden">
 
-      <div data-rv="" style="opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);padding:clamp(24px,3vw,40px) clamp(18px,2.2vw,32px) clamp(24px,3vw,40px) 0;border-right:1px solid rgba(240,240,250,0.10)">
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#9696A4;margin-bottom:12px">01</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(16px,1.6vw,22px);text-transform:uppercase;color:#F0F0FA;line-height:1.15;letter-spacing:-.01em;margin-bottom:14px">Specific beats general. Always.</div>
-        <p style="font-size:14px;line-height:1.64;color:#A0A0AA">Your site. Your data. Your conditions. Generic AI was not trained on any of them.</p>
+      <div data-rv="" style="opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);padding:clamp(32px,4vw,48px);background:var(--bg,#0A0A0C)">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#9898A4;margin-bottom:14px">01</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(20px,2.2vw,28px);text-transform:uppercase;color:#F5F5FA;line-height:1.15;letter-spacing:-.01em;margin-bottom:16px">Specific beats general. Always.</div>
+        <p style="font-size:15px;line-height:1.7;color:#C8C8D2">Your site. Your data. Your conditions. Generic AI was not trained on any of them.</p>
       </div>
 
-      <div data-rv="" style="opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.2,.7,.2,1) .07s,transform .8s cubic-bezier(.2,.7,.2,1) .07s;padding:clamp(24px,3vw,40px) clamp(18px,2.2vw,32px);border-right:1px solid rgba(240,240,250,0.10)">
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#9696A4;margin-bottom:12px">02</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(16px,1.6vw,22px);text-transform:uppercase;color:#F0F0FA;line-height:1.15;letter-spacing:-.01em;margin-bottom:14px">Starting is the advantage. Waiting is the cost.</div>
-        <p style="font-size:14px;line-height:1.64;color:#A0A0AA">Every month you train builds a record no competitor can replicate on any budget or timeline.</p>
+      <div data-rv="" style="opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.2,.7,.2,1) .07s,transform .8s cubic-bezier(.2,.7,.2,1) .07s;padding:clamp(32px,4vw,48px);background:var(--bg,#0A0A0C)">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#9898A4;margin-bottom:14px">02</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(20px,2.2vw,28px);text-transform:uppercase;color:#F5F5FA;line-height:1.15;letter-spacing:-.01em;margin-bottom:16px">Starting is the advantage. Waiting is the cost.</div>
+        <p style="font-size:15px;line-height:1.7;color:#C8C8D2">Every month you train builds a record no competitor can replicate on any budget or timeline.</p>
       </div>
 
-      <div data-rv="" style="opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.2,.7,.2,1) .14s,transform .8s cubic-bezier(.2,.7,.2,1) .14s;padding:clamp(24px,3vw,40px) clamp(18px,2.2vw,32px);border-right:1px solid rgba(240,240,250,0.10)">
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#9696A4;margin-bottom:12px">03</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(16px,1.6vw,22px);text-transform:uppercase;color:#F0F0FA;line-height:1.15;letter-spacing:-.01em;margin-bottom:14px">The moat is the data. Not the model.</div>
-        <p style="font-size:14px;line-height:1.64;color:#A0A0AA">Models can be copied. A proprietary record of your environment, built over years, cannot be reproduced.</p>
+      <div data-rv="" style="opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.2,.7,.2,1) .14s,transform .8s cubic-bezier(.2,.7,.2,1) .14s;padding:clamp(32px,4vw,48px);background:var(--bg,#0A0A0C)">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#9898A4;margin-bottom:14px">03</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(20px,2.2vw,28px);text-transform:uppercase;color:#F5F5FA;line-height:1.15;letter-spacing:-.01em;margin-bottom:16px">The moat is the data. Not the model.</div>
+        <p style="font-size:15px;line-height:1.7;color:#C8C8D2">Models can be copied. A proprietary record of your environment, built over years, cannot be reproduced.</p>
       </div>
 
-      <div data-rv="" style="opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.2,.7,.2,1) .21s,transform .8s cubic-bezier(.2,.7,.2,1) .21s;padding:clamp(24px,3vw,40px) clamp(18px,2.2vw,32px);border-right:1px solid rgba(240,240,250,0.10)">
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#9696A4;margin-bottom:12px">04</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(16px,1.6vw,22px);text-transform:uppercase;color:#F0F0FA;line-height:1.15;letter-spacing:-.01em;margin-bottom:14px">Your roof. Your architecture. Your advantage.</div>
-        <p style="font-size:14px;line-height:1.64;color:#A0A0AA">Running in your building is not a lesser version of the cloud. It is the sovereign version.</p>
+      <div data-rv="" style="opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.2,.7,.2,1) .21s,transform .8s cubic-bezier(.2,.7,.2,1) .21s;padding:clamp(32px,4vw,48px);background:var(--bg,#0A0A0C)">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#9898A4;margin-bottom:14px">04</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(20px,2.2vw,28px);text-transform:uppercase;color:#F5F5FA;line-height:1.15;letter-spacing:-.01em;margin-bottom:16px">Your roof. Your architecture. Your advantage.</div>
+        <p style="font-size:15px;line-height:1.7;color:#C8C8D2">Running in your building is not a lesser version of the cloud. It is the sovereign version.</p>
       </div>
 
-      <div data-rv="" style="opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.2,.7,.2,1) .28s,transform .8s cubic-bezier(.2,.7,.2,1) .28s;padding:clamp(24px,3vw,40px) clamp(18px,2.2vw,32px)">
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#9696A4;margin-bottom:12px">05</div>
-        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(16px,1.6vw,22px);text-transform:uppercase;color:#F0F0FA;line-height:1.15;letter-spacing:-.01em;margin-bottom:14px">Adoption is a build. Not a subscription.</div>
-        <p style="font-size:14px;line-height:1.64;color:#A0A0AA">What is rented visits your operation. What is built and owned becomes part of it. Manar engagements end with assets on your books and capability in your staff, or they have not ended.</p>
+      <!-- Featured: 05 Adoption (full-width span) -->
+      <div data-rv="" style="opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.2,.7,.2,1) .28s,transform .8s cubic-bezier(.2,.7,.2,1) .28s;padding:clamp(32px,4vw,48px);background:rgba(240,240,250,0.04);grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:clamp(24px,4vw,48px);flex-wrap:wrap">
+        <div style="flex:1;min-width:260px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#9898A4;margin-bottom:14px">05</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(22px,2.5vw,32px);text-transform:uppercase;color:#F5F5FA;line-height:1.15;letter-spacing:-.01em;margin-bottom:16px">Adoption is a build. Not a subscription.</div>
+          <p style="font-size:15px;line-height:1.7;color:#C8C8D2;max-width:56ch">What is rented visits your operation. What is built and owned becomes part of it. Manar engagements end with assets on your books and capability in your staff, or they have not ended.</p>
+        </div>
+        <a href="/adoption.html" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#C8C8D2;text-decoration:none;border:1px solid rgba(240,240,250,0.18);border-radius:var(--card-radius,8px);padding:14px 28px;transition:border-color .2s,color .2s;white-space:nowrap" onmouseover="this.style.borderColor='rgba(240,240,250,0.4)';this.style.color='#F5F5FA'" onmouseout="this.style.borderColor='rgba(240,240,250,0.18)';this.style.color='#C8C8D2'">How adoption works &rarr;</a>
       </div>
 
     </div>
