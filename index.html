@@ -222,13 +222,10 @@ div[style*="border:1px solid rgba(240,240,250"]:hover {
     gap: 16px !important;
   }
   .work-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 20px !important;
+    grid-template-columns: 1fr !important;
   }
   .work-grid > div {
-    border-right: none !important;
-    padding-right: 0 !important;
-    padding-left: 0 !important;
+    padding: clamp(24px, 4vw, 36px) !important;
   }
   .hikma-grid {
     grid-template-columns: repeat(2, 1fr) !important;
@@ -289,25 +286,12 @@ div[style*="border:1px solid rgba(240,240,250"]:hover {
     min-width: 0 !important;
   }
 
-  /* How We Work: 4-col → 1-col stacked list */
+  /* How We Work bento: 3-col → 1-col */
   .work-grid {
     grid-template-columns: 1fr !important;
-    gap: 0 !important;
   }
   .work-grid > div {
-    border-right: none !important;
-    border-top: 1px solid rgba(240,240,250,.08) !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    padding-top: 24px !important;
-    padding-bottom: 24px !important;
-  }
-  .work-grid > div:first-child {
-    border-top: none !important;
-    padding-top: 0 !important;
-  }
-  .work-grid > div:last-child {
-    padding-bottom: 0 !important;
+    padding: clamp(24px, 5vw, 32px) !important;
   }
 
   /* Principles: 2-col → 1-col */
@@ -608,6 +592,130 @@ section#top { background-color: transparent !important; }
 }
 </style>
 
+<!-- Light mode CSS (applied when html[data-theme="light"]) -->
+<style id="manar-light-mode">
+html[data-theme="light"] {
+  --bg: #FAFAF8;
+  --bg-alt: #F2F2EE;
+  --text: #1A1A1E;
+  --text-body: #3A3A42;
+  --text-sub: #2A2A32;
+  --text-muted: #6A6A74;
+  --text-dim: #9A9AA4;
+  --border: rgba(10,10,20,0.10);
+  --border-hover: rgba(10,10,20,0.25);
+  --card-bg: rgba(10,10,20,0.035);
+  --card-bg-hover: rgba(10,10,20,0.06);
+  --accent-gold: #A68A3C;
+}
+html[data-theme="light"],
+html[data-theme="light"] body {
+  background: var(--bg) !important;
+  color: var(--text-body) !important;
+}
+html[data-theme="light"] h1,
+html[data-theme="light"] h2 { color: #1A1A1E !important; }
+html[data-theme="light"] h3 { color: var(--text-sub) !important; }
+html[data-theme="light"] p,
+html[data-theme="light"] li,
+html[data-theme="light"] dd { color: var(--text-body) !important; }
+html[data-theme="light"] section,
+html[data-theme="light"] [id] { background-color: var(--bg) !important; }
+html[data-theme="light"] section:nth-of-type(even) { background-color: var(--bg-alt) !important; }
+/* Nav */
+html[data-theme="light"] #manar-nav {
+  background: rgba(250,250,248,0.85) !important;
+  border-bottom-color: rgba(10,10,20,0.08) !important;
+}
+html[data-theme="light"] #manar-nav a { color: #3A3A42 !important; }
+html[data-theme="light"] #manar-nav button span { background: #1A1A1E !important; }
+/* Cards */
+html[data-theme="light"] div[style*="border:1px solid rgba(240,240,250"] {
+  border-color: rgba(10,10,20,0.10) !important;
+  background: rgba(10,10,20,0.025) !important;
+}
+html[data-theme="light"] div[style*="border:1px solid rgba(240,240,250"]:hover {
+  border-color: rgba(10,10,20,0.22) !important;
+  box-shadow: 0 8px 32px -12px rgba(10,10,20,0.12) !important;
+}
+/* Bento grids */
+html[data-theme="light"] .convictions-grid,
+html[data-theme="light"] .work-grid {
+  background: rgba(10,10,20,0.08) !important;
+  border-color: rgba(10,10,20,0.08) !important;
+}
+html[data-theme="light"] .convictions-grid > div,
+html[data-theme="light"] .work-grid > div {
+  background: var(--bg) !important;
+}
+/* Inline color overrides */
+html[data-theme="light"] [style*="color:#F0F0FA"],
+html[data-theme="light"] [style*="color:#F5F5FA"],
+html[data-theme="light"] [style*="color:#FFFFFF"] { color: #1A1A1E !important; }
+html[data-theme="light"] [style*="color:#A0A0AA"],
+html[data-theme="light"] [style*="color:#A0A0A8"],
+html[data-theme="light"] [style*="color:#C8C8D2"],
+html[data-theme="light"] [style*="color:#E2E2E6"],
+html[data-theme="light"] [style*="color:#E2E2EA"] { color: #4A4A54 !important; }
+html[data-theme="light"] [style*="color:#9696A4"],
+html[data-theme="light"] [style*="color:#9898A4"] { color: #6A6A74 !important; }
+/* Hero section keep dramatic */
+html[data-theme="light"] section#top { background: linear-gradient(180deg, #1A1A1E 0%, #2A2A32 100%) !important; }
+html[data-theme="light"] section#top h1,
+html[data-theme="light"] section#top span,
+html[data-theme="light"] section#top p,
+html[data-theme="light"] section#top a { color: inherit; }
+/* Scrollbar */
+html[data-theme="light"] ::-webkit-scrollbar-track { background: var(--bg) !important; }
+html[data-theme="light"] ::-webkit-scrollbar-thumb { background: rgba(10,10,20,0.18) !important; }
+/* Toggle button in light mode */
+html[data-theme="light"] #theme-toggle {
+  border-color: rgba(10,10,20,0.15) !important;
+}
+/* Menu overlay stays dark */
+html[data-theme="light"] [style*="background:#000000"][style*="position:fixed"] {
+  background: #1A1A1E !important;
+}
+/* Footer */
+html[data-theme="light"] footer,
+html[data-theme="light"] footer a { color: var(--text-muted) !important; }
+/* Smooth transition */
+html { transition: background-color 0.3s ease, color 0.3s ease; }
+html * { transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
+</style>
+
+<!-- Theme toggle JS -->
+<script>
+(function(){
+  var saved = localStorage.getItem('manar-theme');
+  var pref = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  if(pref === 'light') document.documentElement.setAttribute('data-theme','light');
+})();
+function toggleTheme(){
+  var html = document.documentElement;
+  var current = html.getAttribute('data-theme');
+  var next = current === 'light' ? 'dark' : 'light';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('manar-theme', next);
+  var moon = document.getElementById('theme-icon-moon');
+  var sun = document.getElementById('theme-icon-sun');
+  if(moon && sun){
+    moon.style.display = next === 'light' ? 'none' : 'block';
+    sun.style.display = next === 'light' ? 'block' : 'none';
+  }
+}
+// Sync icon on load
+document.addEventListener('DOMContentLoaded', function(){
+  var theme = document.documentElement.getAttribute('data-theme');
+  var moon = document.getElementById('theme-icon-moon');
+  var sun = document.getElementById('theme-icon-sun');
+  if(moon && sun && theme === 'light'){
+    moon.style.display = 'none';
+    sun.style.display = 'block';
+  }
+});
+</script>
+
 </head>
 <body>
 <x-dc>
@@ -621,11 +729,15 @@ section#top { background-color: transparent !important; }
     <a href="#top" style="display:flex;align-items:center;gap:11px;text-decoration:none;color:#F0F0FA">
       
       <span style="font-family:'Inter';font-weight:600;font-size:16px;letter-spacing:.2em;text-indent:.2em">MANAR</span>
-      <span style="font-family:'Amiri',serif;font-size:17px;line-height:1;color:#A0A0AA" dir="rtl">منار</span>
+      <span style="font-family:'Amiri',serif;font-size:17px;line-height:1;color:#C9A84C" dir="rtl">منار</span>
     </a>
     <div style="display:flex;align-items:center;gap:28px">
       <a href="/careers.html" style="font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#9696A4;text-decoration:none;transition:color .2s" onmouseover="this.style.color='#F0F0FA'" onmouseout="this.style.color='#9696A4'">Careers</a>
       <a href="/contact.html" style="font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:#C4C4CE;transition:color .2s" onmouseover="this.style.color='#F0F0FA'" onmouseout="this.style.color='#C4C4CE'">Contact</a>
+      <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light mode" style="background:none;border:1px solid rgba(240,240,250,0.12);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s,background .2s;padding:0" onmouseover="this.style.borderColor='rgba(240,240,250,0.3)'" onmouseout="this.style.borderColor='rgba(240,240,250,0.12)'">
+        <svg id="theme-icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C8C8D2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <svg id="theme-icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
       <button onclick="{{ openMenu }}" aria-label="Open menu" style="display:flex;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px 0 8px 8px">
         <span style="width:20px;height:1.5px;background:#F0F0FA;display:block"></span>
         <span style="width:14px;height:1.5px;background:#F0F0FA;display:block"></span>
@@ -637,7 +749,7 @@ section#top { background-color: transparent !important; }
 <!-- ===================== MENU OVERLAY ===================== -->
 <div style="position:fixed;inset:0;z-index:70;overflow-y:auto;background:#000000;color:#F0F0FA;transform:{{ menuTransform }};transition:transform .65s cubic-bezier(.76,0,.18,1);display:flex;flex-direction:column;padding:clamp(22px,5vw,56px) clamp(20px,5vw,64px)">
   <div style="display:flex;align-items:center;justify-content:space-between">
-    <span style="display:flex;align-items:center;gap:11px"><span style="font-family:'Inter';font-weight:600;font-size:16px;letter-spacing:.2em;text-indent:.2em">MANAR</span><span style="font-family:'Amiri',serif;font-size:17px;color:#A0A0AA" dir="rtl">منار</span></span>
+    <span style="display:flex;align-items:center;gap:11px"><span style="font-family:'Inter';font-weight:600;font-size:16px;letter-spacing:.2em;text-indent:.2em">MANAR</span><span style="font-family:'Amiri',serif;font-size:17px;color:#C9A84C" dir="rtl">منار</span></span>
     <button onclick="{{ closeMenu }}" aria-label="Close menu" style="display:flex;align-items:center;gap:10px;background:none;border:0;cursor:pointer;color:#F0F0FA;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;padding:8px 2px">Close
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><line x1="1" y1="1" x2="13" y2="13" stroke="#F0F0FA" stroke-width="1.3"></line><line x1="13" y1="1" x2="1" y2="13" stroke="#F0F0FA" stroke-width="1.3"></line></svg>
     </button>
@@ -791,7 +903,7 @@ section#top { background-color: transparent !important; }
         <span style="display:inline-block;animation:mnFocus 1.0s cubic-bezier(.16,.82,.24,1) .85s both">that knows</span>
         <span style="display:inline-block;color:#A0A0AA;animation:mnFocus 1.0s cubic-bezier(.16,.82,.24,1) 1.0s both">yours.</span>
       </span>
-      <span style="display:block;font-family:'Inter',sans-serif;font-size:clamp(11px,1.1vw,14px);font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#9898A4;margin-top:clamp(16px,2vw,28px);animation:mnFocus 1.0s cubic-bezier(.16,.82,.24,1) 1.15s both">Pakistan's AI Adoption Partner</span>
+      <span style="display:block;font-family:'Inter',sans-serif;font-size:clamp(11px,1.1vw,14px);font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#C9A84C;margin-top:clamp(16px,2vw,28px);animation:mnFocus 1.0s cubic-bezier(.16,.82,.24,1) 1.15s both">Pakistan's AI Adoption Partner</span>
     </h1>
 
     <p style="margin:clamp(22px,2.8vw,30px) 0 0;max-width:52ch;font-size:16px;line-height:1.65;color:#E2E2E6;animation:mnUp 1.0s cubic-bezier(.2,.7,.2,1) 1.2s both">Trained on your domain. Running on hardware you own. No cloud, no data leaving your site.</p>
@@ -804,14 +916,12 @@ section#top { background-color: transparent !important; }
 
   </div>
 
-  <div style="position:absolute;left:0;right:0;bottom:0;z-index:2;border-top:1px solid rgba(240,240,250,.08);background:rgba(0,0,0,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)">
-    <div style="max-width:1200px;margin:0 auto;padding:14px clamp(20px,5vw,64px);display:flex;gap:0;align-items:center;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,240,250,.38);animation:mnUp 1.0s cubic-bezier(.2,.7,.2,1) 1.8s both">
-      <span>Offline</span>
-      <span style="margin:0 clamp(12px,2vw,28px);opacity:.25">&middot;</span>
+  <div style="position:absolute;left:0;right:0;bottom:0;z-index:2;border-top:1px solid rgba(240,240,250,.08);background:rgba(0,0,0,.45);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)">
+    <div style="max-width:1200px;margin:0 auto;padding:16px clamp(20px,5vw,64px);display:flex;gap:clamp(16px,3vw,32px);align-items:center;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,240,250,.52);animation:mnUp 1.0s cubic-bezier(.2,.7,.2,1) 1.8s both">
+      <span style="display:inline-flex;align-items:center;gap:6px"><span style="width:6px;height:6px;border-radius:50%;background:#C9A84C;display:inline-block"></span>Offline</span>
       <span>On your hardware</span>
-      <span style="margin:0 clamp(12px,2vw,28px);opacity:.25">&middot;</span>
       <span>Three open roles</span>
-      <span style="margin-left:auto;font-family:'Amiri',serif;font-size:15px;letter-spacing:0;text-transform:none;color:rgba(240,240,250,.32)" dir="rtl">منارة في الظلام</span>
+      <span style="margin-left:auto;font-family:'Amiri',serif;font-size:16px;letter-spacing:0;text-transform:none;color:#C9A84C" dir="rtl">منارة في الظلام</span>
     </div>
   </div>
 </header>
@@ -840,7 +950,7 @@ section#top { background-color: transparent !important; }
     <div class="thesis-manifest-grid" data-rv="" style="opacity:0;transform:translateY(18px);transition:opacity 1s cubic-bezier(.2,.7,.2,1) .2s,transform 1s cubic-bezier(.2,.7,.2,1) .2s;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(240,240,250,.12)">
 
       <!-- THE PREMISE -->
-      <div style="padding:clamp(24px,3vw,36px) clamp(18px,2.5vw,32px) clamp(24px,3vw,36px) clamp(18px,2.5vw,32px);border-right:1px solid rgba(240,240,250,.08);border-left:3px solid var(--accent-gold,#C9A84C)">
+      <div style="padding:clamp(24px,3vw,36px) clamp(18px,2.5vw,32px) clamp(24px,3vw,36px) clamp(22px,2.5vw,36px);border-right:1px solid rgba(240,240,250,.08);border-left:3px solid var(--accent-gold,#C9A84C)">
         <div style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#A0A0AA;font-weight:600;margin-bottom:16px">The premise</div>
         <div style="font-family:'Inter',sans-serif;font-size:16px;line-height:1.7;color:#A0A0AA">Generic AI is available to everyone, which is precisely why it is the advantage of no one. The advantage is sovereign intelligence, trained on your conditions alone, running offline on hardware you control. Stanford's AI Index measured the same conclusion: the cost of generic intelligence fell 280 fold in eighteen months. What everyone can rent is an advantage to no one.</div>
       </div>
@@ -1094,55 +1204,52 @@ section#top { background-color: transparent !important; }
   <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,64px)">
     <div data-rv="" style="opacity:0;transform:translateY(20px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1);max-width:640px;margin-bottom:clamp(24px,2.4vw,36px)">
       <div style="display:flex;align-items:center;gap:0;margin-bottom:20px">
-        
         <span style="font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#A0A0AA;font-weight:500">How we work</span>
       </div>
       <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(32px,4vw,56px);text-transform:uppercase;line-height:1.08;letter-spacing:-.03em;color:#FFFFFF">From the registry. <span style="color:#A0A0AA">Onto your ground.</span></h2>
       <p style="margin-top:18px;font-size:16px;line-height:1.62;color:#A0A0AA;max-width:58ch">A deployment starts with one of the registered models. It gets trained on your data, installed on your hardware, and kept current as your operation changes.</p>
     </div>
-    <div data-rv="" style="opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);background:rgba(240,240,250,0.04);border:1px solid rgba(240,240,250,0.10);box-shadow:0 1px 2px rgba(10,10,10,.04),0 14px 36px -24px rgba(10,10,10,.2);border:1px solid rgba(240,240,250,.06);border-radius:2px;padding:clamp(34px,4vw,48px);background:rgba(240,240,250,0.04);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px) clamp(24px,3vw,42px)">
-      <div class="work-grid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:0">
-        <div style="padding-right:clamp(12px,1.5vw,20px);border-right:1px solid rgba(240,240,250,.08)">
+    <div data-rv="" style="opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)">
+      <div class="work-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(240,240,250,0.08);border:1px solid rgba(240,240,250,0.08);border-radius:var(--card-radius,8px);overflow:hidden">
+        <div style="padding:clamp(28px,3.5vw,44px);background:var(--bg,#0A0A0C)">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
-            <span style="font-family:'Inter',sans-serif;font-size:12px;font-weight:500;letter-spacing:.08em;color:#A0A0AA">01</span>
-            <span style="font-family:'Inter',sans-serif;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:#A0A0AA">Train</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.08em;color:#9898A4">01</span>
+            <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(18px,1.8vw,24px);letter-spacing:.02em;text-transform:uppercase;color:#F5F5FA">Train</span>
           </div>
-          <p style="font-size:14px;line-height:1.6;color:#A0A0AA;margin-bottom:18px">Start from a registered model already built for the classification a client needs. Train it further on their own data until it knows their specific conditions.</p>
+          <p style="font-size:15px;line-height:1.7;color:#C8C8D2">Start from a registered model already built for the classification a client needs. Train it further on their own data until it knows their specific conditions.</p>
         </div>
-        <div style="padding:0 clamp(12px,1.5vw,20px);border-right:1px solid rgba(240,240,250,.08)">
+        <div style="padding:clamp(28px,3.5vw,44px);background:var(--bg,#0A0A0C)">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
-            <span style="font-family:'Inter',sans-serif;font-size:12px;font-weight:500;letter-spacing:.08em;color:#A0A0AA">02</span>
-            <span style="font-family:'Inter',sans-serif;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:#A0A0AA">Deploy</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.08em;color:#9898A4">02</span>
+            <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(18px,1.8vw,24px);letter-spacing:.02em;text-transform:uppercase;color:#F5F5FA">Deploy</span>
           </div>
-          <p style="font-size:14px;line-height:1.6;color:#A0A0AA;margin-bottom:18px">The trained model installs on hardware the organization owns. In its building, behind its walls, offline if required. No cloud dependency. No data leaves.</p>
+          <p style="font-size:15px;line-height:1.7;color:#C8C8D2">The trained model installs on hardware the organization owns. In its building, behind its walls, offline if required. No cloud dependency. No data leaves.</p>
         </div>
-        <div style="padding:0 clamp(12px,1.5vw,20px);border-right:1px solid rgba(240,240,250,.08)">
+        <div style="padding:clamp(28px,3.5vw,44px);background:var(--bg,#0A0A0C)">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
-            <span style="font-family:'Inter',sans-serif;font-size:12px;font-weight:500;letter-spacing:.08em;color:#A0A0AA">03</span>
-            <span style="font-family:'Inter',sans-serif;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:#A0A0AA">Handover</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.08em;color:#9898A4">03</span>
+            <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(18px,1.8vw,24px);letter-spacing:.02em;text-transform:uppercase;color:#F5F5FA">Handover</span>
           </div>
-          <p style="font-size:14px;line-height:1.6;color:#A0A0AA;margin-bottom:18px">Staff who will work with it are trained before engagement closes. Complete when your own staff operate the system without Manar in the room.</p>
+          <p style="font-size:15px;line-height:1.7;color:#C8C8D2">Staff who will work with it are trained before engagement closes. Complete when your own staff operate the system without Manar in the room.</p>
         </div>
-        <div style="padding:0 clamp(12px,1.5vw,20px);border-right:1px solid rgba(240,240,250,.08)">
+        <div style="padding:clamp(28px,3.5vw,44px);background:var(--bg,#0A0A0C)">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
-            <span style="font-family:'Inter',sans-serif;font-size:12px;font-weight:500;letter-spacing:.08em;color:#A0A0AA">04</span>
-            <span style="font-family:'Inter',sans-serif;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:#A0A0AA">Adapt</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.08em;color:#9898A4">04</span>
+            <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(18px,1.8vw,24px);letter-spacing:.02em;text-transform:uppercase;color:#F5F5FA">Adapt</span>
           </div>
-          <p style="font-size:14px;line-height:1.6;color:#A0A0AA;margin-bottom:18px">The model retrains as the client’s own data grows, so it reflects the operation as it is today, not as it was on day one.</p>
+          <p style="font-size:15px;line-height:1.7;color:#C8C8D2">The model retrains as the client's own data grows, so it reflects the operation as it is today, not as it was on day one.</p>
         </div>
-        <div style="padding-left:clamp(12px,1.5vw,20px)">
+        <div style="padding:clamp(28px,3.5vw,44px);background:var(--bg,#0A0A0C)">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
-            <span style="font-family:'Inter',sans-serif;font-size:12px;font-weight:500;letter-spacing:.08em;color:#A0A0AA">05</span>
-            <span style="font-family:'Inter',sans-serif;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:#A0A0AA">Compound</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.08em;color:#9898A4">05</span>
+            <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(18px,1.8vw,24px);letter-spacing:.02em;text-transform:uppercase;color:#F5F5FA">Compound</span>
           </div>
-          <p style="font-size:14px;line-height:1.6;color:#A0A0AA;margin-bottom:18px">Accuracy on a client’s own conditions grows with every day the model runs there. Holds a record no later competitor can shortcut.</p>
+          <p style="font-size:15px;line-height:1.7;color:#C8C8D2">Accuracy on a client's own conditions grows with every day the model runs there. Holds a record no later competitor can shortcut.</p>
         </div>
       </div>
     </div>
-  
-<div style="margin-top:clamp(24px,3vw,40px)"><a href="/methodology.html" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#A0A0AA;text-decoration:none;transition:color .2s;border-bottom:1px solid rgba(240,240,250,0.18);padding-bottom:3px" onmouseover="this.style.color='#F0F0FA'" onmouseout="this.style.color='rgba(240,240,250,0.55)'">Full methodology &rarr;</a></div>
-</div>
-
+    <div style="margin-top:clamp(24px,3vw,40px)"><a href="/methodology.html" style="font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#A0A0AA;text-decoration:none;transition:color .2s;border-bottom:1px solid rgba(240,240,250,0.18);padding-bottom:3px" onmouseover="this.style.color='#F0F0FA'" onmouseout="this.style.color='rgba(240,240,250,0.55)'">Full methodology &rarr;</a></div>
+  </div>
 </section>
 
 <!-- ===================== HIKMA ===================== -->
