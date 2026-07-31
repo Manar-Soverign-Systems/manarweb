@@ -287,12 +287,27 @@ div[style*="border:1px solid rgba(240,240,250"]:hover {
     min-width: 0 !important;
   }
 
-  /* How We Work bento: 3-col → 1-col */
+  /* How We Work bento: 3-col → 1-col stacked rows */
   .work-grid {
     grid-template-columns: 1fr !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    gap: 0 !important;
   }
   .work-grid > div {
-    padding: clamp(24px, 5vw, 32px) !important;
+    padding: clamp(22px, 5vw, 32px) 0 !important;
+    border-bottom: 1px solid rgba(240,240,250,0.08) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+  }
+  .work-grid > div:last-child {
+    border-bottom: none !important;
+    grid-column: 1 !important;
+  }
+  /* remove the span-2 on compound on mobile */
+  .work-grid-compound {
+    grid-column: 1 !important;
   }
 
   /* Principles: 2-col → 1-col */
@@ -918,6 +933,53 @@ section#top { background-color: transparent !important; }
 <style>@media(max-width:680px){.adoption-record-grid{grid-template-columns:1fr!important}}</style>
 
 <!-- ===================== WHERE IT FITS ===================== -->
+<style>
+/* Where It Fits — enhanced click affordance */
+.wif-row {
+  position: relative;
+  transition: background .18s ease, border-left-color .18s ease;
+  border-left: 3px solid transparent;
+}
+.wif-row:hover {
+  background: rgba(240,240,250,0.04) !important;
+  border-left-color: rgba(240,240,250,0.22) !important;
+  padding-left: 16px !important;
+}
+.wif-row .wif-name {
+  transition: color .18s ease;
+}
+.wif-row:hover .wif-name {
+  color: #FFFFFF !important;
+}
+.wif-row .wif-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(240,240,250,0.14);
+  border-radius: 50%;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: #686878;
+  flex-shrink: 0;
+  transition: border-color .18s ease, color .18s ease, transform .18s ease;
+}
+.wif-row:hover .wif-arrow {
+  border-color: rgba(240,240,250,0.38);
+  color: #F0F0FA;
+  transform: translateX(4px);
+}
+@media(max-width:600px){
+  .wif-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+  }
+  .wif-row .wif-desc { text-align: left !important; max-width: none !important; }
+  .wif-row .wif-arrow { display: flex !important; }
+}
+</style>
 
 <div style="height:1px;max-width:100%;background:linear-gradient(90deg,transparent,rgba(190,205,255,.28) 30%,rgba(190,205,255,.28) 70%,transparent);pointer-events:none"></div>
 <section id="industries" style="padding:clamp(72px,8vw,128px) 0;background:#0A0A0A">
@@ -934,40 +996,40 @@ section#top { background-color: transparent !important; }
     <!-- Sector rows -->
     <div data-rv="" style="opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.2,.7,.2,1) .08s,transform .9s cubic-bezier(.2,.7,.2,1) .08s;border-top:1px solid rgba(240,240,250,0.10)">
 
-      <a href="/industries.html#institutions" class="wif-row" style="display:flex;align-items:center;justify-content:space-between;gap:clamp(16px,3vw,40px);padding:clamp(20px,2.5vw,28px) 0;border-bottom:1px solid rgba(240,240,250,0.08);text-decoration:none;transition:background .2s" onmouseover="this.style.background='rgba(240,240,250,0.03)';this.style.paddingLeft='12px'" onmouseout="this.style.background='transparent';this.style.paddingLeft='0'">
-        <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(22px,2.8vw,36px);text-transform:uppercase;letter-spacing:-.01em;color:#F5F5FA;flex-shrink:0">Institutions</span>
-        <span style="font-size:15px;line-height:1.5;color:#9898A4;max-width:44ch;text-align:right">AI that reads your archive. Policy, records, and registers answered in seconds.</span>
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#686878;flex-shrink:0;margin-left:auto">→</span>
+      <a href="/industries.html#institutions" class="wif-row" style="display:flex;align-items:center;gap:clamp(16px,3vw,40px);padding:clamp(20px,2.5vw,28px) 0;padding-left:0;border-bottom:1px solid rgba(240,240,250,0.08);text-decoration:none">
+        <span class="wif-name" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(22px,2.8vw,36px);text-transform:uppercase;letter-spacing:-.01em;color:#E8E8F0;flex-shrink:0;min-width:clamp(140px,18vw,220px)">Institutions</span>
+        <span class="wif-desc" style="font-size:15px;line-height:1.5;color:#9898A4;flex:1">AI that reads your archive. Policy, records, and registers answered in seconds.</span>
+        <span class="wif-arrow">→</span>
       </a>
 
-      <a href="/industries.html#security" class="wif-row" style="display:flex;align-items:center;justify-content:space-between;gap:clamp(16px,3vw,40px);padding:clamp(20px,2.5vw,28px) 0;border-bottom:1px solid rgba(240,240,250,0.08);text-decoration:none;transition:background .2s,padding-left .2s" onmouseover="this.style.background='rgba(240,240,250,0.03)';this.style.paddingLeft='12px'" onmouseout="this.style.background='transparent';this.style.paddingLeft='0'">
-        <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(22px,2.8vw,36px);text-transform:uppercase;letter-spacing:-.01em;color:#F5F5FA;flex-shrink:0">Security</span>
-        <span style="font-size:15px;line-height:1.5;color:#9898A4;max-width:44ch;text-align:right">AI that watches your cameras. Trained on your site, not a generic dataset.</span>
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#686878;flex-shrink:0;margin-left:auto">→</span>
+      <a href="/industries.html#security" class="wif-row" style="display:flex;align-items:center;gap:clamp(16px,3vw,40px);padding:clamp(20px,2.5vw,28px) 0;padding-left:0;border-bottom:1px solid rgba(240,240,250,0.08);text-decoration:none">
+        <span class="wif-name" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(22px,2.8vw,36px);text-transform:uppercase;letter-spacing:-.01em;color:#E8E8F0;flex-shrink:0;min-width:clamp(140px,18vw,220px)">Security</span>
+        <span class="wif-desc" style="font-size:15px;line-height:1.5;color:#9898A4;flex:1">AI that watches your cameras. Trained on your site, not a generic dataset.</span>
+        <span class="wif-arrow">→</span>
       </a>
 
-      <a href="/industries.html#factories" class="wif-row" style="display:flex;align-items:center;justify-content:space-between;gap:clamp(16px,3vw,40px);padding:clamp(20px,2.5vw,28px) 0;border-bottom:1px solid rgba(240,240,250,0.08);text-decoration:none;transition:background .2s,padding-left .2s" onmouseover="this.style.background='rgba(240,240,250,0.03)';this.style.paddingLeft='12px'" onmouseout="this.style.background='transparent';this.style.paddingLeft='0'">
-        <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(22px,2.8vw,36px);text-transform:uppercase;letter-spacing:-.01em;color:#F5F5FA;flex-shrink:0">Factories</span>
-        <span style="font-size:15px;line-height:1.5;color:#9898A4;max-width:44ch;text-align:right">AI that reads your production line. Defects caught before they move downstream.</span>
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#686878;flex-shrink:0;margin-left:auto">→</span>
+      <a href="/industries.html#factories" class="wif-row" style="display:flex;align-items:center;gap:clamp(16px,3vw,40px);padding:clamp(20px,2.5vw,28px) 0;padding-left:0;border-bottom:1px solid rgba(240,240,250,0.08);text-decoration:none">
+        <span class="wif-name" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(22px,2.8vw,36px);text-transform:uppercase;letter-spacing:-.01em;color:#E8E8F0;flex-shrink:0;min-width:clamp(140px,18vw,220px)">Factories</span>
+        <span class="wif-desc" style="font-size:15px;line-height:1.5;color:#9898A4;flex:1">AI that reads your production line. Defects caught before they move downstream.</span>
+        <span class="wif-arrow">→</span>
       </a>
 
-      <a href="/industries.html#oilandgas" class="wif-row" style="display:flex;align-items:center;justify-content:space-between;gap:clamp(16px,3vw,40px);padding:clamp(20px,2.5vw,28px) 0;border-bottom:1px solid rgba(240,240,250,0.08);text-decoration:none;transition:background .2s,padding-left .2s" onmouseover="this.style.background='rgba(240,240,250,0.03)';this.style.paddingLeft='12px'" onmouseout="this.style.background='transparent';this.style.paddingLeft='0'">
-        <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(22px,2.8vw,36px);text-transform:uppercase;letter-spacing:-.01em;color:#F5F5FA;flex-shrink:0">Oil and Gas</span>
-        <span style="font-size:15px;line-height:1.5;color:#9898A4;max-width:44ch;text-align:right">AI that monitors your field. Telemetry read on-site, offline, no cloud required.</span>
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#686878;flex-shrink:0;margin-left:auto">→</span>
+      <a href="/industries.html#oilandgas" class="wif-row" style="display:flex;align-items:center;gap:clamp(16px,3vw,40px);padding:clamp(20px,2.5vw,28px) 0;padding-left:0;border-bottom:1px solid rgba(240,240,250,0.08);text-decoration:none">
+        <span class="wif-name" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(22px,2.8vw,36px);text-transform:uppercase;letter-spacing:-.01em;color:#E8E8F0;flex-shrink:0;min-width:clamp(140px,18vw,220px)">Oil and Gas</span>
+        <span class="wif-desc" style="font-size:15px;line-height:1.5;color:#9898A4;flex:1">AI that monitors your field. Telemetry read on-site, offline, no cloud required.</span>
+        <span class="wif-arrow">→</span>
       </a>
 
-      <a href="/industries.html#agriculture" class="wif-row" style="display:flex;align-items:center;justify-content:space-between;gap:clamp(16px,3vw,40px);padding:clamp(20px,2.5vw,28px) 0;border-bottom:1px solid rgba(240,240,250,0.08);text-decoration:none;transition:background .2s,padding-left .2s" onmouseover="this.style.background='rgba(240,240,250,0.03)';this.style.paddingLeft='12px'" onmouseout="this.style.background='transparent';this.style.paddingLeft='0'">
-        <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(22px,2.8vw,36px);text-transform:uppercase;letter-spacing:-.01em;color:#F5F5FA;flex-shrink:0">Agriculture</span>
-        <span style="font-size:15px;line-height:1.5;color:#9898A4;max-width:44ch;text-align:right">AI that reads your land. Decades of yield history made useful for the first time.</span>
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#686878;flex-shrink:0;margin-left:auto">→</span>
+      <a href="/industries.html#agriculture" class="wif-row" style="display:flex;align-items:center;gap:clamp(16px,3vw,40px);padding:clamp(20px,2.5vw,28px) 0;padding-left:0;border-bottom:1px solid rgba(240,240,250,0.08);text-decoration:none">
+        <span class="wif-name" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(22px,2.8vw,36px);text-transform:uppercase;letter-spacing:-.01em;color:#E8E8F0;flex-shrink:0;min-width:clamp(140px,18vw,220px)">Agriculture</span>
+        <span class="wif-desc" style="font-size:15px;line-height:1.5;color:#9898A4;flex:1">AI that reads your land. Decades of yield history made useful for the first time.</span>
+        <span class="wif-arrow">→</span>
       </a>
 
-      <a href="/industries.html#health" class="wif-row" style="display:flex;align-items:center;justify-content:space-between;gap:clamp(16px,3vw,40px);padding:clamp(20px,2.5vw,28px) 0;border-bottom:1px solid rgba(240,240,250,0.08);text-decoration:none;transition:background .2s,padding-left .2s" onmouseover="this.style.background='rgba(240,240,250,0.03)';this.style.paddingLeft='12px'" onmouseout="this.style.background='transparent';this.style.paddingLeft='0'">
-        <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(22px,2.8vw,36px);text-transform:uppercase;letter-spacing:-.01em;color:#F5F5FA;flex-shrink:0">Healthcare</span>
-        <span style="font-size:15px;line-height:1.5;color:#9898A4;max-width:44ch;text-align:right">AI that reads your records. Patient history answered in seconds. No data leaves the building.</span>
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#686878;flex-shrink:0;margin-left:auto">→</span>
+      <a href="/industries.html#health" class="wif-row" style="display:flex;align-items:center;gap:clamp(16px,3vw,40px);padding:clamp(20px,2.5vw,28px) 0;padding-left:0;border-bottom:1px solid rgba(240,240,250,0.08);text-decoration:none">
+        <span class="wif-name" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(22px,2.8vw,36px);text-transform:uppercase;letter-spacing:-.01em;color:#E8E8F0;flex-shrink:0;min-width:clamp(140px,18vw,220px)">Healthcare</span>
+        <span class="wif-desc" style="font-size:15px;line-height:1.5;color:#9898A4;flex:1">AI that reads your records. Patient history answered in seconds. No data leaves the building.</span>
+        <span class="wif-arrow">→</span>
       </a>
 
     </div>
@@ -976,14 +1038,7 @@ section#top { background-color: transparent !important; }
 
   </div>
 </section>
-<style>
-@media(max-width:700px){.wif-head-grid{grid-template-columns:1fr!important}}
-@media(max-width:600px){
-  .wif-row{flex-direction:column!important;align-items:flex-start!important;gap:8px!important}
-  .wif-row>span:nth-child(2){text-align:left!important;max-width:none!important}
-  .wif-row>span:last-child{display:none!important}
-}
-</style>
+
 
 <!-- ===================== INTEGRATION ===================== -->
 
@@ -1108,14 +1163,12 @@ section#top { background-color: transparent !important; }
           </div>
           <p style="font-size:15px;line-height:1.7;color:#C8C8D2">The model retrains as the client's own data grows, so it reflects the operation as it is today, not as it was on day one.</p>
         </div>
-        <div style="padding:clamp(28px,3.5vw,44px);background:rgba(240,240,250,0.025);grid-column:span 2;display:flex;gap:clamp(32px,4vw,56px);align-items:flex-start">
-          <div style="flex:1">
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
-              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.08em;color:#9898A4">05</span>
-              <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(18px,1.8vw,24px);letter-spacing:.02em;text-transform:uppercase;color:#F5F5FA">Compound</span>
-            </div>
-            <p style="font-size:15px;line-height:1.7;color:#C8C8D2;max-width:52ch">Accuracy on a client's own conditions grows with every day the model runs there. Holds a record no later competitor can shortcut.</p>
+        <div class="work-grid-compound" style="padding:clamp(28px,3.5vw,44px);background:rgba(240,240,250,0.025);grid-column:span 2">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.08em;color:#9898A4">05</span>
+            <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(18px,1.8vw,24px);letter-spacing:.02em;text-transform:uppercase;color:#F5F5FA">Compound</span>
           </div>
+          <p style="font-size:15px;line-height:1.7;color:#C8C8D2;max-width:52ch">Accuracy on a client's own conditions grows with every day the model runs there. Holds a record no later competitor can shortcut.</p>
         </div>
       </div>
     </div>
