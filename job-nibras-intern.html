@@ -143,8 +143,10 @@ h1{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(52p
 .apply-heading{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(32px,4vw,48px);text-transform:uppercase;color:#F0F0FA;letter-spacing:.01em;margin-bottom:16px}
 .apply-body{font-size:16px;line-height:1.74;color:#C4C4CE;margin-bottom:32px;max-width:580px}
 .apply-body p+p{margin-top:12px}
-.apply-cta{display:inline-flex;align-items:center;gap:10px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.18em;text-transform:uppercase;padding:16px 32px;background:#F0F0FA;color:#000;text-decoration:none;transition:background .2s}
-.apply-cta:hover{background:#E8E8EE}
+.apply-cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;letter-spacing:.18em;text-transform:uppercase;padding:16px 32px;background:#FFFFFF!important;color:#000000!important;text-decoration:none;transition:background .2s,color .2s;border:none!important;opacity:1!important;visibility:visible!important}
+.apply-cta:hover{background:#E0E0EA!important;color:#000000!important}
+.apply-cta:disabled{background:#CCCCCC!important;color:#333333!important;cursor:not-allowed}
+button[type="submit"].apply-cta{background:#FFFFFF!important;color:#000000!important}
 .apply-note{margin-top:20px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:#9696A4;line-height:1.9}
 
 .related{max-width:860px;margin:0 auto;padding:0 clamp(24px,5vw,64px) clamp(60px,8vh,90px)}
@@ -166,7 +168,7 @@ html,body { background:var(--bg)!important; color:var(--text-body); font-size:17
 p,li,dd,td,th { color:var(--text-body); }
 h1,h2 { color:#FFFFFF!important; }
 h3 { color:var(--text-sub)!important; }
-section,[id] { background-color:var(--bg)!important; }
+section,section[id] { background-color:var(--bg)!important; }
 section { padding-top:var(--section-gap)!important; padding-bottom:var(--section-gap)!important; }
 section:nth-of-type(odd) { background-color:var(--bg)!important; }
 section:nth-of-type(even) { background-color:var(--bg-alt)!important; }
